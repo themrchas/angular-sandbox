@@ -1,0 +1,27 @@
+doctype html
+html
+    head
+        Title Add a Team 
+    body
+
+        form(action="/op/addTeam" method='POST')
+            p Team Name
+                input(type='text' name='teamName' placeholder='Team Name' required)
+            p Date Founded
+                input(type='text' name='dateFounded' placeholder='Founding Date: MM/DD/YYYY')
+            p City
+                input(type='text' name='city' placeholder='City' required)
+            p Championships Won
+                input(type='number' name='championships' placeholder='Number of Championships')
+            div
+                p Stadium Information
+                    p Stadium Name
+                        input(type='text' name='stadiumName' placeholder='Stadium Name' required)
+                    p Stadium Capacity
+                        input(type='number' name='stadiumCapacity' placeholder='Stadium Capacity')
+
+                    
+            input(type="submit" value="Save")
+
+        form(action="/" method="POST")
+        input(type="submit" value="Home")    

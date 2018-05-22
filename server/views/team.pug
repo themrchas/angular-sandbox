@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title Page for #{teamName}
+  body
+    h1 Team Facts
+        p Team Name:            #{teamName}
+        p Location:             #{teamInfo.city}
+        p Stadium Name:         #{teamInfo.stadium.name}
+        p Stadium Capacity:     #{teamInfo.stadium.capacity}
+        p Date Founded:         #{teamInfo.datefounded}
+        p Championships Won:    #{teamInfo.championships}
+        
+        //img(src="/logos/"+teamInfo.img height="100" width="100")
+
+    div
+        form(action="/op/deleteTeam/"+teamName method='GET')
+          input(type="submit" value="Delete this team")
+        form(action="/op/editTeam/"+teamName method='GET')
+          input(type="submit" value="Edit this team")
+        form(action="/" method='POST')
+          input(type="submit" value="Home")
+
+
+    

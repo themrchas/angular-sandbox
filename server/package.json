@@ -1,0 +1,31 @@
+{
+  "name": "assignment-5-rest-apis-themrchas",
+  "version": "1.0.0",
+  "description": "\"Components supporting an Express framework\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www",
+    "start-dev": "nodemon --inspect ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HarvardDCENode/assignment-5-rest-apis-themrchas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HarvardDCENode/assignment-5-rest-apis-themrchas.git/issues"
+  },
+  "homepage": "https://github.com/HarvardDCENode/assignment-5-rest-apis-themrchas.git#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "log-util": "^1.2.0",
+    "mongoose": "^5.0.10",
+    "pug": "^2.0.0-rc.4"
+  },
+  "devDependencies": {}
+}

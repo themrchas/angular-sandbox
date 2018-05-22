@@ -1,0 +1,22 @@
+doctype html
+html
+    head
+        title Welcome to Bundesliga 2018! 
+    body
+        h1 Choose a team to view or add a team
+        form(action="/op/displayTeam" method="GET")
+            ul
+                each team in teamData
+                    label(for="team") #{team.teamName}
+                    input(
+                        type='radio'
+                        name='team'
+                        value=team.teamName
+                    )
+                    br
+            input(type="submit" value="View team")
+
+        div
+            form(action="/op/addTeam" method='GET')
+                input(type="submit" value="Add a team")    
+            

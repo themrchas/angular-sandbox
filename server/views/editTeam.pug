@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title Page for #{teamName} - #{teamInfo._id}
+  body
+
+    form(action="/op/editTeam" method='POST')
+        p Team Name 
+            input(type='text' name='teamName' value=teamName required)
+        p Date Founded 
+            input(type='text' name='dateFounded' value=teamInfo.datefounded)
+        p City 
+            input(type='text' name='city' placeholder='City' value=teamInfo.city required)
+        p Championships Won   
+            input(type='number' name='championships' value=teamInfo.championships)
+        div Stadium Information
+            p Stadium Name
+                input(type='text' name='stadiumName' value=teamInfo.stadium.name required)
+            p Stadium Capacity
+                input(type='number' name='stadiumCapacity' value=teamInfo.stadium.capacity)
+     
+        
+        input(type="hidden" name="docId" value=teamInfo._id)    
+        input(type="submit" value="Save edits")
+
+    form(action="/" method="POST")
+        input(type="submit" value="Home")
+    
+    

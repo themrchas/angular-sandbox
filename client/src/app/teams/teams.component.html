@@ -1,0 +1,62 @@
+
+<div *ngFor="let team of teamList">
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-body">
+
+        <div class="row">
+         <div class="col-md-10" style="font-size: 20px">
+            {{team.teamName}}
+          </div> 
+        </div>
+        <div class="row" style="font-size: 16px">
+          <div class="col-md-3 col-md-offset-2">
+            Date Founded: {{ team.datefounded ? (team.datefounded | date:'MM/dd/yyyy') : "UNK" }}
+          </div>
+  
+          <div class="col-md-2">
+            City: {{team.city}}
+          </div>
+          <div class="col-md-2">
+              Championships: {{ team.championships ? team.championships : "UNK" }}
+                 
+          </div>
+        </div>
+        <div class="row" style="font-size: 16px">
+          <div class="col-md-3 col-md-offset-2">
+            Stadium Name: {{team.stadium.name}}
+          </div>
+          <div class="col-md-4">
+            Stadium Capacity: {{team.stadium.capacity ? team.stadium.capacity : "UNK" }}
+          </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row" style="font-size: 16px">
+          <div class="col-md-8">
+            <a routerLink="/showIndividual/{{team.teamName}}">
+              <button class="btn btn-default btn-md">View Team Details</button>
+            </a>
+          </div>
+          <br/>
+          <br/>
+        </div>
+  
+  
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <div class="row">
+        <div class="panel panel-default"> 
+          <div class="panel-body"> 
+            <div class="col-md-4" style="font-size: 20px; color:black;">
+              <a routerLink="/newTeam" style="color:black">Click here to create a team</a>
+            </div>
+          </div>
+        </div> 
+    
+      </div>
+    </div>

@@ -1,0 +1,73 @@
+<div *ngIf="teamInfo">
+  <div>
+    <h1>{{ teamInfo.teamName }}</h1>
+    <h2>City: {{teamInfo.city}}</h2>
+
+    <!-- If available, display date founded -->
+    <h2 *ngIf="teamInfo.datefounded">Date Founded: {{ teamInfo.datefounded | date:'MM/dd/yyyy' }}</h2>
+
+    <!-- Display championship data or if empty, UNK for unknown -->
+    <h2 *ngIf="teamInfo.championships; else elseBlock">Championships: {{ teamInfo.championships }}</h2>
+    <ng-template #elseBlock>
+      <h2>Championships: UNK</h2>
+    </ng-template>
+
+    <h2>Stadium: {{teamInfo.stadium.name}}</h2>
+    <h2>Capacity: {{teamInfo.stadium.capacity  ? teamInfo.stadium.capacity : "UNK"}}</h2>
+    <br/>
+    
+    <button type="button" (click)="goToMain()">Main Page</button>
+    <button type="button" (click)="deleteTeam()">Delete Team</button>
+    <button type="button" (click)="showEditForm()">{{ editButtonText }}</button>
+  </div>
+
+  
+  <div *ngIf="showEdit">
+      <br/><br/>
+      <form #form="ngForm" (ngSubmit)="updateTeamInfo(form.value)">
+        <div class="form-group">
+
+          <label for="editTeamName">Team Name:</label>
+          <input name="editTeamName" #teamName="ngModel" class="form-control" pattern="[A-z0-9- ]+" [ngModel]="teamInfo.teamName" required>
+          <div *ngIf="teamName.invalid && (teamName.dirty || teamName.touched)" class="alert alert-danger">
+            Team name consists of spaces and alphanumeric characters.
+          </div>
+          <br />
+                   
+          <label for="editCity">City:</label>
+          <input  name="editCity" #city="ngModel" class="form-control" pattern="[A-z ]+" [ngModel]="teamInfo.city" required>
+          <div *ngIf="city.invalid && (city.dirty || city.touched)" class="alert alert-danger">
+              City consists of spaces and letters.
+           </div>
+
+          <br/>
+
+          <label for="editDateFounded">Date Founded:</label>
+          <input type="date" name="editDateFounded" class="form-control" [ngModel]="teamInfo.datefounded">
+
+
+          <br />
+          <label for="editChampionships">Championships:</label>
+          <input name="editChampionships" #championships="ngModel" class="form-control" pattern="\d*" [ngModel]="teamInfo.championships">
+          <div *ngIf="championships.invalid && (championships.dirty || championships.touched)" class="alert alert-danger">
+              Numeric values only
+           </div>
+
+          <br />
+          <label for="editStadiumName">Stadium Name:</label>
+          <input name="editStadiumName" class="form-control" #stadiumName="ngModel" pattern="[A-z0-9- ]+"[ngModel]="teamInfo.stadium.name" required>
+          <div *ngIf="stadiumName.invalid && (stadiumName.dirty || stadiumName.touched)" class="alert alert-danger">
+              Stadium name consists of spaces and alphanumeric characters.
+           </div>
+
+          <br />
+          <label for="editStadiumCapacity">Stadium Capacity:</label>
+          <input name="editStadiumCapacity" #stadiumCapacity="ngModel" class="form-control" pattern="\d{4,}" [ngModel]="teamInfo.stadium.capacity">
+          <div *ngIf="stadiumCapacity.invalid && (stadiumCapacity.dirty || stadiumCapacity.touched)" class="alert alert-danger">
+              Stadium capacity consists at least four digit numeric values only.
+            </div>
+        </div>
+        <button type="submit">Save Edit</button>
+      </form> 
+      </div>
+</div>

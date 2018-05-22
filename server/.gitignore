@@ -1,0 +1,18 @@
+# Directories containing images for future inclusion
+htdocs*
+
+node_modules/
+
+!bin/www.js
+
+bundesliga.js
+
+views/*bak*
+views/REST-Test.html
+views/restTest.js
+
+#Contains DB credentials
+.env
+
+
+

@@ -1,0 +1,45 @@
+<div>
+    <form #form="ngForm" (ngSubmit)="saveTeam()">
+      <div class="form-group">
+        <label for="teamName">Team Name:</label>
+        <input name="teamName" #teamName="ngModel" class="form-control" pattern="[A-z0-9- ]+" [(ngModel)]="teamData.teamName" required>
+        <div *ngIf="teamName.invalid && (teamName.dirty || teamName.touched)" class="alert alert-danger">
+            Team name consists of spaces and alphanumeric characters.
+         </div>
+       <br />
+        <label for="city">City:</label>
+        <input name="city" #city="ngModel" class="form-control" pattern="[A-z ]+"  [(ngModel)]="teamData.city" required>
+        <div *ngIf="city.invalid && (city.dirty || city.touched)" class="alert alert-danger">
+            City consists of spaces and letters.
+         </div>
+        <br/>
+       <label for="dateFounded">Date Founded:</label>
+        <input type="date" name="datefounded" class="form-control" [(ngModel)]="teamData.dateFounded">
+        <br />
+        <label for="championships">Championships:</label>
+        <input name="championships" #championships="ngModel" class="form-control" pattern="\d*" [(ngModel)]="teamData.championships"> 
+        <div *ngIf="championships.invalid && (championships.dirty || championships.touched)" class="alert alert-danger">
+            Numeric values only
+         </div>
+        <br/>
+         <label for="stadiumName">Stadium Name:</label>
+        <input name="stadiumName" #stadiumName="ngModel" class="form-control" pattern="[A-z0-9- ]+" [(ngModel)]="teamData.stadiumName" required>
+        <div *ngIf="stadiumName.invalid && (stadiumName.dirty || stadiumName.touched)" class="alert alert-danger">
+            Stadium name consists of spaces and alphanumeric characters.
+         </div>
+        <br />
+        <label for="stadiumCapacity">Stadium Capacity:</label>
+        <input name="stadiumCapacity" #stadiumCapacity="ngModel" pattern="\d{4,}" class="form-control" [(ngModel)]="teamData.stadiumCapacity">
+        <div *ngIf="stadiumCapacity.invalid && (stadiumCapacity.dirty || stadiumCapacity.touched)" class="alert alert-danger">
+           Stadium capacity consists of at least 4 digit numeric values only.
+         </div>
+      </div>
+      <div class="btn-grp btn-grp-md">
+        <button type="submit" [disabled]="!form.valid" class="btn">Save Team</button>
+        <a routerLink="/showAll">
+          <button class="btn">Main Page</button>
+        </a>
+      </div>
+    </form>
+</div>
+
